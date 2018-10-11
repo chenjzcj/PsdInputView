@@ -1,0 +1,19 @@
+<resources>
+    <style name="my_psd_input_editview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:inputType">number</item>
+        <item name="android:textColor">#EEEEEE</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="my_psd_input_line">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+</resources>
