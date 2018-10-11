@@ -3,3 +3,12 @@
 
 如何用AndroidStudio将代码上传至Maven仓库？
 https://blog.csdn.net/BestRivena/article/details/77977332
+
+maven引用：
+
+    <dependency>
+      <groupId>com.felix</groupId>
+      <artifactId>psdinputview</artifactId>
+      <version>0.0.2</version>
+      <type>pom</type>
+    </dependency>

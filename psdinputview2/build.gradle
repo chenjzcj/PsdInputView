@@ -35,11 +35,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+//发布命令：./gradlew clean build bintrayUpload -PbintrayUser=felixzhong -PbintrayKey=8d10fd8e71a76da8ecc79ad6ef12b9e8707893cb -PdryRun=false
 publish {
     userOrg = "felixzhong"//bintray.com用户名
     groupId = "com.felix"//jecenter上的路径
     artifactId = "psdinputview"//项目名称
-    publishVersion = "0.0.1"//版本号
+    publishVersion = "0.0.2"//版本号
     desc = "密码输入框"//描述，不重要
     website = "https://github.com/chenjzcj/PsdInputView.git"//网站，不重要，眉题模拟github上面的，当然有最好了
     repoName = "felixRepo"//库的名称
