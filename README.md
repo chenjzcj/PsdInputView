@@ -1,8 +1,8 @@
 密码或者验证码输入框，使用效果如下图所示：
 
-![示意图1](https://upload-images.jianshu.io/upload_images/8903781-a1029a774f2b2c4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![示意图1](https://upload-images.jianshu.io/upload_images/8903781-a1029a774f2b2c4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500)
 
-![示意图2](https://upload-images.jianshu.io/upload_images/8903781-f1633bc5f1f6e871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![示意图2](https://upload-images.jianshu.io/upload_images/8903781-f1633bc5f1f6e871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500)
 
 maven引用：
 
