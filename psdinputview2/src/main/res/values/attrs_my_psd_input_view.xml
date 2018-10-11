@@ -1,0 +1,7 @@
+<resources>
+    <declare-styleable name="MyPsdInputView">
+        <attr name="lineColor" format="color" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+    </declare-styleable>
+</resources>

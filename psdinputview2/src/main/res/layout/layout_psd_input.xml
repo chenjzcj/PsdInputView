@@ -18,7 +18,10 @@
             android:id="@+id/et_psd_1"
             style="@style/my_psd_input_editview"
             tools:text="1" />
-        <View style="@style/my_psd_input_line" />
+
+        <View
+            android:id="@+id/line1"
+            style="@style/my_psd_input_line" />
     </LinearLayout>
 
     <LinearLayout
@@ -27,12 +30,15 @@
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:orientation="vertical">
+
         <EditText
             android:id="@+id/et_psd_2"
             style="@style/my_psd_input_editview"
             tools:text="1" />
 
-        <View style="@style/my_psd_input_line" />
+        <View
+            android:id="@+id/line2"
+            style="@style/my_psd_input_line" />
     </LinearLayout>
 
     <LinearLayout
@@ -47,7 +53,9 @@
             style="@style/my_psd_input_editview"
             tools:text="1" />
 
-        <View style="@style/my_psd_input_line" />
+        <View
+            android:id="@+id/line3"
+            style="@style/my_psd_input_line" />
     </LinearLayout>
 
     <LinearLayout
@@ -62,7 +70,9 @@
             style="@style/my_psd_input_editview"
             tools:text="1" />
 
-        <View style="@style/my_psd_input_line" />
+        <View
+            android:id="@+id/line4"
+            style="@style/my_psd_input_line" />
     </LinearLayout>
 
     <LinearLayout
@@ -77,7 +87,9 @@
             style="@style/my_psd_input_editview"
             tools:text="1" />
 
-        <View style="@style/my_psd_input_line" />
+        <View
+            android:id="@+id/line5"
+            style="@style/my_psd_input_line" />
     </LinearLayout>
 
     <LinearLayout
@@ -91,7 +103,9 @@
             style="@style/my_psd_input_editview"
             tools:text="1" />
 
-        <View style="@style/my_psd_input_line" />
+        <View
+            android:id="@+id/line6"
+            style="@style/my_psd_input_line" />
     </LinearLayout>
 
 

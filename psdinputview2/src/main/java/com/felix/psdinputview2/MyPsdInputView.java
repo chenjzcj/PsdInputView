@@ -1,6 +1,8 @@
 package com.felix.psdinputview2;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -18,7 +20,7 @@ public class MyPsdInputView extends RelativeLayout {
 
     public MyPsdInputView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init(context);
+        init(context, attrs);
     }
 
     /**
@@ -36,8 +38,29 @@ public class MyPsdInputView extends RelativeLayout {
         return psd.toString();
     }
 
-    private void init(Context context) {
+    private int mLineColor = Color.WHITE;
+    private int mTextColor = getContext().getResources().getColor(R.color.color_eee);
+    /**
+     * 单位默认为sp
+     */
+    private float mTextSize = 18;
+
+    private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.layout_psd_input, this);
+
+
+        final TypedArray a = getContext().obtainStyledAttributes(
+                attrs, R.styleable.MyPsdInputView, 0, 0);
+
+        mLineColor = a.getColor(R.styleable.MyPsdInputView_lineColor, mLineColor);
+        mTextColor = a.getColor(R.styleable.MyPsdInputView_textColor, mTextColor);
+        //因为getDimension方法会自动将sp转成dp，所以再将其转成sp
+        mTextSize = a.getDimension(R.styleable.MyPsdInputView_textSize, mTextSize);
+        mTextSize = px2sp(mTextSize);
+
+        a.recycle();
+
+        setLineColor();
 
         EditText etPsd1 = findViewById(R.id.et_psd_1);
         EditText etPsd2 = findViewById(R.id.et_psd_2);
@@ -45,6 +68,21 @@ public class MyPsdInputView extends RelativeLayout {
         EditText etPsd4 = findViewById(R.id.et_psd_4);
         EditText etPsd5 = findViewById(R.id.et_psd_5);
         EditText etPsd6 = findViewById(R.id.et_psd_6);
+
+        etPsd1.setTextColor(mTextColor);
+        etPsd2.setTextColor(mTextColor);
+        etPsd3.setTextColor(mTextColor);
+        etPsd4.setTextColor(mTextColor);
+        etPsd5.setTextColor(mTextColor);
+        etPsd6.setTextColor(mTextColor);
+
+
+        etPsd1.setTextSize(mTextSize);
+        etPsd2.setTextSize(mTextSize);
+        etPsd3.setTextSize(mTextSize);
+        etPsd4.setTextSize(mTextSize);
+        etPsd5.setTextSize(mTextSize);
+        etPsd6.setTextSize(mTextSize);
 
         setOnFocusChangeListener(etPsd1, etPsd2, null);
         setOnFocusChangeListener(etPsd2, etPsd3, etPsd1);
@@ -59,6 +97,20 @@ public class MyPsdInputView extends RelativeLayout {
         addTextChangedListener(etPsd4, etPsd5, etPsd3);
         addTextChangedListener(etPsd5, etPsd6, etPsd4);
         addTextChangedListener(etPsd6, null, etPsd5);
+    }
+
+    public int px2sp(final float pxValue) {
+        final float fontScale = getContext().getResources().getDisplayMetrics().scaledDensity;
+        return (int) (pxValue / fontScale + 0.5f);
+    }
+
+    private void setLineColor() {
+        findViewById(R.id.line1).setBackgroundColor(mLineColor);
+        findViewById(R.id.line2).setBackgroundColor(mLineColor);
+        findViewById(R.id.line3).setBackgroundColor(mLineColor);
+        findViewById(R.id.line4).setBackgroundColor(mLineColor);
+        findViewById(R.id.line5).setBackgroundColor(mLineColor);
+        findViewById(R.id.line6).setBackgroundColor(mLineColor);
     }
 
     /**
@@ -137,5 +189,4 @@ public class MyPsdInputView extends RelativeLayout {
 
         }
     }
-
 }
