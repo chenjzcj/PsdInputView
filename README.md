@@ -24,10 +24,12 @@ gradle引用：
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
             
+设置输入完成后需要进行的操作：
+
     final MyPsdInputView mpiv = findViewById(R.id.mpiv);
-            mpiv.setTask(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(MainActivity.this, mpiv.getPsd(), Toast.LENGTH_LONG).show();
-                }
-            });
+    mpiv.setTask(new Runnable() {
+        @Override
+        public void run() {
+            Toast.makeText(MainActivity.this, mpiv.getPsd(), Toast.LENGTH_LONG).show();
+        }
+    });
