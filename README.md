@@ -15,14 +15,21 @@ maven引用：
     
 gradle引用：
 
-    implementation 'com.felix:psdinputview:0.0.2'
+    implementation 'com.felix:psdinputview:1.0.2'
     
 使用方法：
 
     <com.felix.psdinputview2.MyPsdInputView
-            android:id="@+id/mpiv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        android:id="@+id/mpiv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:lineColor="@android:color/holo_red_dark"
+        app:textColor="@android:color/holo_green_light"
+        app:textSize="18sp" />
+       
+1. lineColor:下划线的颜色
+2. textColor:文字颜色
+3. textSize:文字尺寸
             
 设置输入完成后需要进行的操作：
 
