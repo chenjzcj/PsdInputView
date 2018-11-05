@@ -51,7 +51,7 @@ publish {
     artifactId = "psdinputview"//项目名称
     publishVersion = "1.0.3"//版本号
     desc = "密码输入框"//描述，不重要
-    website = "https://github.com/chenjzcj/PsdInputView.git"//网站，不重要，眉题模拟github上面的，当然有最好了
+    website = "https://github.com/chenjzcj/PsdInputView.git"//网站，不重要，尽量模拟github上面的，当然有最好了
     repoName = "felixRepo"//库的名称
     //compile 'com.felix:psdinputview:0.0.1' 最终结果(add to jcenter后需要至少2小时才可以使用)
 }
