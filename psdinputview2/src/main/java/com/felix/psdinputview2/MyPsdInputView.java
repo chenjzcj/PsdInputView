@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -97,6 +98,13 @@ public class MyPsdInputView extends RelativeLayout {
         addTextChangedListener(etPsd4, etPsd5, etPsd3);
         addTextChangedListener(etPsd5, etPsd6, etPsd4);
         addTextChangedListener(etPsd6, null, etPsd5);
+
+        setOnKeyListener(etPsd1, etPsd2, null);
+        setOnKeyListener(etPsd2, etPsd3, etPsd1);
+        setOnKeyListener(etPsd3, etPsd4, etPsd2);
+        setOnKeyListener(etPsd4, etPsd5, etPsd3);
+        setOnKeyListener(etPsd5, etPsd6, etPsd4);
+        setOnKeyListener(etPsd6, null, etPsd5);
     }
 
     public int px2sp(final float pxValue) {
@@ -124,21 +132,17 @@ public class MyPsdInputView extends RelativeLayout {
         curEt.addTextChangedListener(new TextWatcherImpl() {
             @Override
             public void afterTextChanged(Editable s) {
-                super.afterTextChanged(s);
                 if (s.length() == 1) {
-                    psd.append(s.toString());
+                    psd.append(s);
                     if (nextEt != null) {
                         nextEt.requestFocus();
                     } else {
                         if (psd.length() == PSD_LENGHT) {
                             task.run();
-                            psd.setLength(0);
                         }
                     }
                 } else {
-                    if (preEt != null) {
-                        preEt.requestFocus();
-                    }
+                    psd.deleteCharAt(psd.length() - 1);
                 }
             }
         });
@@ -151,7 +155,7 @@ public class MyPsdInputView extends RelativeLayout {
      * @param preEt  前一个EditText
      * @param nextEt 后一个EditText
      */
-    private void setOnFocusChangeListener(EditText curEt, final EditText nextEt, final EditText preEt) {
+    private void setOnFocusChangeListener(final EditText curEt, final EditText nextEt, final EditText preEt) {
         curEt.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -169,6 +173,41 @@ public class MyPsdInputView extends RelativeLayout {
                         }
                     }
                 }
+            }
+        });
+    }
+
+    String curContent = null;
+
+    /**
+     * Android EditText 监听软键盘删除键
+     * https://www.cnblogs.com/nmj1986/archive/2013/06/15/3137448.html
+     *
+     * @param curEt  当前EditText
+     * @param preEt  前一个EditText
+     * @param nextEt 后一个EditText
+     */
+    private void setOnKeyListener(final EditText curEt, final EditText nextEt, final EditText preEt) {
+
+        curEt.setOnKeyListener(new OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                //setOnKeyListener中onKey执行两次问题解决:https://blog.csdn.net/rongwenbin/article/details/51396241?utm_source=blogxgwz5
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    curContent = curEt.getText().toString();
+                } else if (event.getAction() == KeyEvent.ACTION_UP) {
+                    //如果按了删除键,并且内容为空,则跳转到前一个EditText
+                    if (keyCode == KeyEvent.KEYCODE_DEL) {
+                        if (TextUtils.isEmpty(curContent)) {
+                            if (preEt != null) {
+                                preEt.setText("");
+                                preEt.requestFocus();
+                            }
+                        }
+                        curContent = null;
+                    }
+                }
+                return false;
             }
         });
     }
