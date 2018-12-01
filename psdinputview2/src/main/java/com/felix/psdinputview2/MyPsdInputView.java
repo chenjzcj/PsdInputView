@@ -196,7 +196,7 @@ public class MyPsdInputView extends RelativeLayout {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     curContent = curEt.getText().toString();
                 } else if (event.getAction() == KeyEvent.ACTION_UP) {
-                    //如果按了删除键,并且内容为空,则跳转到前一个EditText
+                    //If the delete key is pressed and the content is empty, jump to the previous EditText
                     if (keyCode == KeyEvent.KEYCODE_DEL) {
                         if (TextUtils.isEmpty(curContent)) {
                             if (preEt != null) {
