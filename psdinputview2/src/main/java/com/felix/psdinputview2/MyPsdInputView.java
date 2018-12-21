@@ -49,9 +49,7 @@ public class MyPsdInputView extends RelativeLayout {
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.layout_psd_input, this);
 
-
-        final TypedArray a = getContext().obtainStyledAttributes(
-                attrs, R.styleable.MyPsdInputView, 0, 0);
+        final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.MyPsdInputView, 0, 0);
 
         mLineColor = a.getColor(R.styleable.MyPsdInputView_lineColor, mLineColor);
         mTextColor = a.getColor(R.styleable.MyPsdInputView_textColor, mTextColor);
@@ -70,20 +68,12 @@ public class MyPsdInputView extends RelativeLayout {
         EditText etPsd5 = findViewById(R.id.et_psd_5);
         EditText etPsd6 = findViewById(R.id.et_psd_6);
 
-        etPsd1.setTextColor(mTextColor);
-        etPsd2.setTextColor(mTextColor);
-        etPsd3.setTextColor(mTextColor);
-        etPsd4.setTextColor(mTextColor);
-        etPsd5.setTextColor(mTextColor);
-        etPsd6.setTextColor(mTextColor);
-
-
-        etPsd1.setTextSize(mTextSize);
-        etPsd2.setTextSize(mTextSize);
-        etPsd3.setTextSize(mTextSize);
-        etPsd4.setTextSize(mTextSize);
-        etPsd5.setTextSize(mTextSize);
-        etPsd6.setTextSize(mTextSize);
+        initEditText(etPsd1);
+        initEditText(etPsd2);
+        initEditText(etPsd3);
+        initEditText(etPsd4);
+        initEditText(etPsd5);
+        initEditText(etPsd6);
 
         setOnFocusChangeListener(etPsd1, etPsd2, null);
         setOnFocusChangeListener(etPsd2, etPsd3, etPsd1);
@@ -105,6 +95,11 @@ public class MyPsdInputView extends RelativeLayout {
         setOnKeyListener(etPsd4, etPsd5, etPsd3);
         setOnKeyListener(etPsd5, etPsd6, etPsd4);
         setOnKeyListener(etPsd6, null, etPsd5);
+    }
+
+    private void initEditText(EditText editText) {
+        editText.setTextColor(mTextColor);
+        editText.setTextSize(mTextSize);
     }
 
     public int px2sp(final float pxValue) {
@@ -129,7 +124,17 @@ public class MyPsdInputView extends RelativeLayout {
      * @param preEt  前一个EditText
      */
     private void addTextChangedListener(final EditText curEt, final EditText nextEt, final EditText preEt) {
-        curEt.addTextChangedListener(new TextWatcherImpl() {
+        curEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.length() == 1) {
@@ -210,22 +215,5 @@ public class MyPsdInputView extends RelativeLayout {
                 return false;
             }
         });
-    }
-
-    class TextWatcherImpl implements TextWatcher {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
     }
 }
