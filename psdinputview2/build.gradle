@@ -11,8 +11,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 2
-        versionName "1.0.4"
+        versionCode 3
+        versionName "1.0.5"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -49,9 +49,9 @@ publish {
     userOrg = "felixzhong"//bintray.com用户名
     groupId = "com.felix"//jecenter上的路径
     artifactId = "psdinputview"//项目名称
-    publishVersion = "1.0.4"//版本号
+    publishVersion = "1.0.5"//版本号
     desc = "密码输入框"//描述，不重要
     website = "https://github.com/chenjzcj/PsdInputView.git"//网站，不重要，尽量模拟github上面的，当然有最好了
     repoName = "felixRepo"//库的名称
-    //implementation 'com.felix:psdinputview:1.0.4' 最终结果(add to jcenter后需要至少2小时才可以使用)
+    //implementation 'com.felix:psdinputview:1.0.5' 最终结果(add to jcenter后需要至少2小时才可以使用)
 }
