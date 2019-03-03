@@ -4,7 +4,11 @@
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
+/.idea/caches
+/.idea/misc.xml
+/docs/Temp
 .DS_Store
 /build
 /captures
 .externalNativeBuild
+.svn
